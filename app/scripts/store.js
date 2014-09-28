@@ -1,0 +1,1 @@
+Concertember.ApplicationAdapter = DS.FixtureAdapter;

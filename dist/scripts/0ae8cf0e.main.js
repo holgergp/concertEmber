@@ -1,0 +1,1 @@
+!function(){window.Concertember=Ember.Application.create()}(),function(){Concertember.ApplicationAdapter=DS.FixtureAdapter}(),function(){Concertember.ApplicationRoute=Ember.Route.extend({model:function(){return["red","yellow","blue"]}})}(),function(){Concertember.Router.map(function(){})}();
