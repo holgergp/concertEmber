@@ -2,6 +2,44 @@ Concertember.ApplicationRoute = Ember.Route.extend({
     // admittedly, this should be in IndexRoute and not in the
     // top level ApplicationRoute; we're in transition... :-)
     model: function () {
-        return ['red', 'yellow', 'blue'];
+
+       var newConcert = {
+            artist: '',
+            venue: '',
+            //date: moment().format('D.M.YYYY')
+        };
+        var allConcerts = [
+            {
+                artist: 'Blind Guardian',
+                venue: 'Philipshalle',
+              //  date: '2013-02-08'
+
+            }
+        ];
+        var loveConcerts = [
+            {
+                artist: 'The Saddest Landscape',
+                venue: 'Turock',
+                //date: '2014-10-02'
+
+            }
+        ];
+        var maybeConcerts = [
+            {
+                artist: 'Spaceman Spiff',
+                venue: 'FFT',
+                //date: '2015-02-08'
+
+            }
+        ];
+
+
+
+        return {
+            loveConcerts: loveConcerts,
+            allConcerts: allConcerts,
+            maybeConcerts: maybeConcerts
+
+        };
     }
 });
