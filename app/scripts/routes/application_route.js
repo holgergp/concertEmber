@@ -1,7 +1,14 @@
 Concertember.ApplicationRoute = Ember.Route.extend({
     // admittedly, this should be in IndexRoute and not in the
     // top level ApplicationRoute; we're in transition... :-)
-    model: function () {
+
+
+    controllerName: 'concert',
+    model: function() {
+        return this.store.find('concerts','concerts_1'); // returns a promise that will resolve
+        // with the record representing Trek Glowacki
+    }
+    /**model: function () {
 
        var newConcert = {
             artist: '',
@@ -41,5 +48,5 @@ Concertember.ApplicationRoute = Ember.Route.extend({
             maybeConcerts: maybeConcerts
 
         };
-    }
+    }*/
 });

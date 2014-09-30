@@ -4,7 +4,7 @@
     </div>
 <!--Fixme! Includes-->
 
-    <div class="container-fluid">
+    <div class="">
         <div class="row">
             <div class="col-md-4">
 
@@ -12,7 +12,6 @@
                 <div class="panel panel-primary" data-drop="true" ng-model='loveConcerts' jqyoui-droppable>
                     <div class="panel-heading">Muss ich hin!</div>
                     <div class="panel-body">
-
                         {{#each concert in loveConcerts}}
                         <div>
 
@@ -35,8 +34,8 @@
                                             ng-click="removeConcert(loveConcerts,concert)"></button>
                                 </div>
                             </div>
-                        {{/each}}
                     </div>
+                        {{/each}}
                     </div>
                 </div>
 
