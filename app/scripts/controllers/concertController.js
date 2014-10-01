@@ -6,7 +6,7 @@ Concertember.ConcertController = Ember.ObjectController.extend({
     newConcert: {
         artist: '',
         venue: '',
-        date: moment().format('D.M.YYYY')
+        date: moment().format('DD.MM.YYYY')
     },
 
     actions: {
@@ -41,12 +41,14 @@ Concertember.ConcertController = Ember.ObjectController.extend({
                 {
                     artist: '',
                     venue: '',
-                    date: moment().format('D.M.YYYY')
+                    date: moment().format('DD.MM.YYYY')
                 }
             );
         },
 
-        removeConcert: function (array, concert) {
+        removeConcert: function (listName, concert) {
+            concert.deleteRecord();
+            concert.save();
 
         }
 
