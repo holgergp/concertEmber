@@ -7,7 +7,7 @@ Prerequisites
 - node.js >= 0.10
 - bower
 - grunt
-- ruby und compass (from yeoman ember template)
+- ruby/compass (from yeoman ember template)
 
 Setup your environment:
 -----------------------
