@@ -13,7 +13,7 @@ Concertember.Concerts = DS.Model.extend({
 Concertember.Concert = DS.Model.extend({
     artist: attr('string'),
     venue: attr('string'),
-    date: attr('string'),
+    date: attr('date')
 });
 
 
@@ -22,21 +22,21 @@ Concertember.Concert.FIXTURES = [
         id: 'concert_1',
         artist: 'Blind Guardian',
         venue: 'Philipshalle',
-        date: ''
+        date: moment().format('L')
 
     },
     {
         id: 'concert_2',
         artist: 'The Saddest Landscape',
         venue: 'Turock',
-        date: ''
+        date: moment().format('L')
 
     },
     {
         id: 'concert_3',
         artist: 'Spaceman Spiff',
         venue: 'FFT',
-        date: ''
+        date: moment().format('L')
 
     }
 ];

@@ -6,5 +6,6 @@ require('scripts/store');
 require('scripts/models/*');
 require('scripts/routes/*');
 require('scripts/components/*');
+require('scripts/helpers/*');
 require('scripts/views/*');
 require('scripts/router');

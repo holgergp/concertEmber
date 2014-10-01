@@ -27,6 +27,7 @@
                                     {{concert.artist}}
                                     -
                                     {{concert.venue}} -
+                                    {{formatDate concert.date}}
                                 </div>
 
                                 <div class="col-md-2 col-lg-2 col-sm-2">
@@ -58,7 +59,7 @@
                                             {{concert.artist}}
                                             -
                                             {{concert.venue}} -
-
+                                            {{formatDate concert.date}}
                                         </div>
                                     </div>
 
@@ -90,7 +91,7 @@
                                         {{concert.artist}}
                                         -
                                         {{concert.venue}} -
-
+                                        {{formatDate concert.date}}
                                     </div>
 
                                     <div class="col-md-2 col-lg-2 col-sm-2">
@@ -109,20 +110,26 @@
                 <form name="addConcertForm" novalidate class="form-inline" role="form">
                     <div class="form-group">
                         <label class="sr-only">Artist</label>
-                        <input type="text" name="artist" ng-model="newConcert.artist" placeholder="Künstler"
-                               required>
+                        {{input value=newConcert.artist placeholder="Künstler"}}
+                        <!--<input type="text" name="artist" ng-model="newConcert.artist" placeholder="Künstler"
+                               required>-->
                     </div>
                     <div class="form-group">
                         <label class="sr-only">Ort</label>
-                        <input type="text" name="venue" ng-model="newConcert.venue" placeholder="Ort" required>
+                        {{input value=newConcert.venue placeholder="Ort"}}
+                        <!--<input type="text" name="venue" ng-model="newConcert.venue" placeholder="Ort" required>-->
                     </div>
                     <div class="form-group">
                         <label class="sr-only">Datum</label>
-                        <input type="datetime" name="date" ng-model="newConcert.date" placeholder="Datum" required>
+                        {{input value=newConcert.date placeholder="Künstler"}}
+                        <!--<input type="datetime" name="date" ng-model="newConcert.date" placeholder="Datum" required>-->
                     </div>
-                    <button ng-click="addConcert()" ng-disabled="addConcertForm.$invalid"
+
+                    <button {{action 'addConcert'}} class="btn btn-success glyphicon glyphicon-plus"
+                                                    type="submit"></button>
+                    <!--<button ng-click="addConcert()" ng-disabled="addConcertForm.$invalid"
                             class="btn btn-success glyphicon glyphicon-plus"
-                            type="submit"></button>
+                            type="submit"></button>-->
                 </form>
             </div>
 
