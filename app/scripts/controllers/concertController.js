@@ -11,10 +11,8 @@ Concertember.ConcertController = Ember.ObjectController.extend({
 
     actions: {
         addConcert: function () {
-            // the current value of the text field
 
 
-            // Get the todo title set by the "New Todo" text field
             var newConcert = this.get('newConcert');
             if (!newConcert) {
                 return;
@@ -37,7 +35,7 @@ Concertember.ConcertController = Ember.ObjectController.extend({
                 //this.store.commit();
             });
 
-            // Clear the "New Todo" text field
+            // Clear the "New Concert" text field
             this.set('newConcert',
 
                 {
