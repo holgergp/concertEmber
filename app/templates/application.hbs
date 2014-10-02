@@ -12,35 +12,40 @@
                 <div class="panel panel-primary" data-drop="true" ng-model='loveConcerts' jqyoui-droppable>
                     <div class="panel-heading">Muss ich hin!</div>
                     <div class="panel-body">
-                        {{#each concert in loveConcerts}}
+                        {{#collection Ember.ConcertCollectionView contentBinding="loveConcerts"}}
+
                             <div>
 
                                 <div class="col-md-12 btn btn-xs" style="cursor: pointer;"
                                      data-drag="true"
-                                     data-jqyoui-options="{revert: 'invalid'}" ng-model="allConcerts"
+                                     data-jqyoui-options="{revert: 'invalid'}" ng-model="loveConcerts"
                                      jqyoui-draggable="{index: {{$index}},animate:true,placeholder:true}"
                                      ng-hide="!concert.artist">
 
-                                    <div class="col-md-10 col-lg-10 col-sm-10 btn btn-xs">
+                                    <div {{bind-attr class="view.alertClass :col-md-10 :col-lg-10 :col-sm-10 :btn :btn-xs"}}>
 
 
-                                        {{concert.artist}}
+                                        {{view.content.artist}}
                                         -
-                                        {{concert.venue}} -
-                                        {{formatDate concert.date}}
+                                        {{view.content.venue}} -
+                                        {{formatDate view.content.date}}
                                     </div>
 
                                     <div class="col-md-2 col-lg-2 col-sm-2">
                                         <!-- <button class="btn btn-xs btn-danger glyphicon glyphicon-remove"
                                                  ng-click="removeConcert(loveConcerts,concert)"></button>-->
 
-                                        <button {{action 'removeConcert' 'loveConcerts' concert}}
+                                        <button {{action 'removeConcert' view.content.}}
                                                 class="btn btn-xs btn-danger glyphicon glyphicon-remove"
                                                 ></button>
                                     </div>
                                 </div>
                             </div>
-                        {{/each}}
+
+
+
+                        {{/collection}}
+
                     </div>
                 </div>
 
@@ -49,7 +54,7 @@
                 <div class="panel panel-warning" data-drop="true" ng-model='allConcerts' jqyoui-droppable>
                     <div class="panel-heading">Alle Konzerte</div>
                 <div class="panel-body">
-                    {{#each concert in allConcerts}}
+                    {{#collection Ember.ConcertCollectionView contentBinding="allConcerts"}}
                         <div>
 
 
@@ -59,18 +64,18 @@
                                  jqyoui-draggable="{index: {{$index}},animate:true,placeholder:true}"
                                  ng-hide="!concert.artist">
                                 <div class="col-md-10 col-lg-10 col-sm-10" ng-class="alertClass(concert)">
-                                    <div class="btn btn-xs">
-                                        {{concert.artist}}
+                                    <div {{bind-attr class="view.alertClass :col-md-10 :col-lg-10 :col-sm-10 :btn :btn-xs"}}>
+                                        {{view.content.artist}}
                                         -
-                                        {{concert.venue}} -
-                                        {{formatDate concert.date}}
+                                        {{view.content.venue}} -
+                                        {{formatDate view.content.date}}
                                     </div>
                                 </div>
 
                                 <div class="col-md-2 col-lg-2 col-sm-2">
                                     <!--<div class="btn btn-xs btn-danger glyphicon glyphicon-remove"
                                          ng-click="removeConcert(allConcerts,concert)">-->
-                                    <button {{action 'removeConcert' 'allConcerts' concert}}
+                                    <button {{action 'removeConcert'  view.content}}
                                             class="btn btn-xs btn-danger glyphicon glyphicon-remove"
                                             ></button>
 
@@ -79,7 +84,7 @@
                         </div>
 
                     </div>
-                    {{/each}}
+                    {{/collection}}
                 </div>
             </div>
         </div>
@@ -87,7 +92,7 @@
             <div class="panel panel-success" data-drop="true" ng-model='maybeConcerts' jqyoui-droppable>
                 <div class="panel-heading">Mal schauen!</div>
                 <div class="panel-body">
-                    {{#each concert in maybeConcerts}}
+                    {{#collection Ember.ConcertCollectionView contentBinding="maybeConcerts"}}
                         <div>
 
                             <div class="col-md-12 btn btn-xs" style="cursor: pointer;"
@@ -95,24 +100,24 @@
                                  data-jqyoui-options="{revert: 'invalid'}" ng-model="allConcerts"
                                  jqyoui-draggable="{index: {{$index}},animate:true,placeholder:true}"
                                  ng-hide="!concert.artist">
-                                <div class="col-md-10 col-lg-10 col-sm-10 btn btn-xs"
-                                     ng-class="alertClass(concert)">
-                                    {{concert.artist}}
+                                <div {{bind-attr class="view.alertClass :col-md-10 :col-lg-10 :col-sm-10 :btn :btn-xs"}}
+                                   >
+                                    {{view.content.artist}}
                                     -
-                                    {{concert.venue}} -
-                                    {{formatDate concert.date}}
+                                    {{view.content.venue}} -
+                                    {{formatDate view.content.date}}
                                 </div>
 
                                 <div class="col-md-2 col-lg-2 col-sm-2">
                                     <!-- <button class="btn btn-xs btn-danger glyphicon glyphicon-remove"
                                              ng-click="removeConcert(maybeConcerts,concert)"></button>-->
-                                    <button {{action 'removeConcert' 'maybeConcerts' concert}}
+                                    <button {{action 'removeConcert'  view.content}}
                                             class="btn btn-xs btn-danger glyphicon glyphicon-remove"
                                             ></button>
                                 </div>
                             </div>
                         </div>
-                    {{/each}}
+                    {{/collection}}
                 </div>
             </div>
         </div>

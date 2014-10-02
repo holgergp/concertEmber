@@ -3,12 +3,10 @@ var belongsTo = DS.belongsTo;
 var hasMany = DS.hasMany;
 
 
-;
-
 Concertember.Concerts = DS.Model.extend({
-    loveConcerts: hasMany('concert',{async: true}),
-    maybeConcerts: hasMany('concert',{async: true}),
-    allConcerts: hasMany('concert',{async: true})
+    loveConcerts: hasMany('concert', {async: true}),
+    maybeConcerts: hasMany('concert', {async: true}),
+    allConcerts: hasMany('concert', {async: true})
 });
 Concertember.Concert = DS.Model.extend({
     artist: attr('string'),
@@ -22,7 +20,7 @@ Concertember.Concert.FIXTURES = [
         id: 'concert_1',
         artist: 'Blind Guardian',
         venue: 'Philipshalle',
-        date: moment().format('DD.MM.YYYY')
+        date: moment().subtract(2,'days').format('DD.MM.YYYY')
 
     },
     {
