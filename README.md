@@ -1,5 +1,7 @@
 concertEmber
 ============
+[![Build Status](https://travis-ci.org/holgergp/concertEmber.svg)](https://travis-ci.org/holgergp/concertEmber)
+
 Demo application to compare various client side mvc approaches. This time using ember.js
 
 Prerequisites
