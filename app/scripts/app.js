@@ -1,5 +1,4 @@
 var Concertember = window.Concertember = Ember.Application.create();
-moment.locale("de");
 
 /* Order and include as you please. */
 require('scripts/controllers/*');

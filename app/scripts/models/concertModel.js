@@ -11,6 +11,7 @@ Concertember.Concerts = DS.Model.extend({
 Concertember.Concert = DS.Model.extend({
     artist: attr('string'),
     venue: attr('string'),
+    //fixme hgp this should be proper date or moment
     date: attr('string')
 });
 
@@ -22,6 +23,8 @@ Concertember.Concert.FIXTURES = [
         venue: 'Philipshalle',
         date: moment().subtract(2,'days').format('DD.MM.YYYY')
 
+        //.format('DD.MM.YYYY')
+
     },
     {
         id: 'concert_2',
@@ -29,12 +32,14 @@ Concertember.Concert.FIXTURES = [
         venue: 'Turock',
         date: moment().format('DD.MM.YYYY')
 
+
     },
     {
         id: 'concert_3',
         artist: 'Spaceman Spiff',
         venue: 'FFT',
         date: moment().format('DD.MM.YYYY')
+
 
     }
 ];

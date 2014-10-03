@@ -6,10 +6,9 @@ Concertember.ConcertController = Ember.ObjectController.extend({
     newConcert: {
         artist: '',
         venue: '',
-        date: moment().format('DD.MM.YYYY')
+        //date: moment().format('DD.MM.YYYY')
+        dateString: moment().format('DD.MM.YYYY')
     },
-
-
 
 
     actions: {
@@ -24,7 +23,8 @@ Concertember.ConcertController = Ember.ObjectController.extend({
             var addedConcert = this.store.createRecord('concert', {
                 artist: newConcert.artist,
                 venue: newConcert.venue,
-                date: newConcert.date
+                // hgp validateme
+                date: newConcert.dateString
             });
 
             addedConcert.save();
@@ -44,7 +44,8 @@ Concertember.ConcertController = Ember.ObjectController.extend({
                 {
                     artist: '',
                     venue: '',
-                    date: moment().format('DD.MM.YYYY')
+                    dateString: moment().format('DD.MM.YYYY')
+                        //.format('DD.MM.YYYY')
                 }
             );
         },

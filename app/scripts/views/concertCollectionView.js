@@ -7,11 +7,11 @@ Ember.ConcertCollectionView = Ember.CollectionView.extend({
             alertClass: function () {
 
                 var isConcertOverdue = function (concertDateString) {
-                    return  moment(concertDateString).isBefore(moment());
+                    return  moment(concertDateString,'DD.MM.YYYY').isBefore(moment());
                 };
 
                 var isConcertAboutToHappen = function (concertDateString) {
-                    return moment().add(15, 'days').isAfter(moment(concertDateString)) && !isConcertOverdue(concertDateString);
+                    return moment().add(15, 'days').isAfter(moment(concertDateString,'DD.MM.YYYY')) && !isConcertOverdue(concertDateString);
                 };
 
                 var isConcertDateFine = function (concertDateString) {
