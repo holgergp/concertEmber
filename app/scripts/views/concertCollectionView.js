@@ -1,7 +1,7 @@
 /**
  * Created by flunky on 01.10.14.
  */
-Ember.ConcertCollectionView = Ember.CollectionView.extend({
+Concertember.ConcertCollectionView = Ember.CollectionView.extend({
     //contentBinding: 'controller',
     itemViewClass: Ember.View.extend({
             alertClass: function () {

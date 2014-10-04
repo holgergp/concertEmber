@@ -1,45 +1,35 @@
-<div class="container-fluid">
-    <div class="header">
-        <h3 class="text-muted">Welche Konzerte stehen an?</h3>
-    </div>
-    <!--Fixme! Includes-->
+<div class="">
+    <div class="row">
+        <div class="col-md-4">
+            {{#view Concertember.DropTarget}}
 
-    <div class="">
-        <div class="row">
-            <div class="col-md-4">
-
-
-                <div class="panel panel-primary" data-drop="true" ng-model='loveConcerts' jqyoui-droppable>
+                <div class="panel panel-primary">
                     <div class="panel-heading">Muss ich hin!</div>
                     <div class="panel-body">
-                        {{#collection Ember.ConcertCollectionView contentBinding="loveConcerts"}}
+                        {{#collection Concertember.ConcertCollectionView contentBinding="loveConcerts"}}
 
                             <div>
 
-                                <div class="col-md-12 btn btn-xs" style="cursor: pointer;"
-                                     data-drag="true"
-                                     data-jqyoui-options="{revert: 'invalid'}" ng-model="loveConcerts"
-                                     jqyoui-draggable="{index: {{$index}},animate:true,placeholder:true}"
-                                     ng-hide="!concert.artist">
+                                {{#view Concertember.Box}}
+                                    <div class="col-md-12 btn btn-xs" style="cursor: pointer;">
 
-                                    <div {{bind-attr class="view.alertClass :col-md-10 :col-lg-10 :col-sm-10 :btn :btn-xs"}}>
+                                        <div {{bind-attr class="view.parentView.alertClass :col-md-10 :col-lg-10 :col-sm-10 :btn :btn-xs"}}>
+                                            {{view.parentView.content.artist}}
+                                            -
+                                            {{view.parentView.content.venue}} -
+                                            {{formatDate view.parentView.content.date}}
+                                        </div>
+
+                                        <div class="col-md-2 col-lg-2 col-sm-2">
+
+                                            <button {{action 'removeConcert' view.parentView.content}}
+                                                    class="btn btn-xs btn-danger glyphicon glyphicon-remove"
+                                                    ></button>
+                                        </div>
 
 
-                                        {{view.content.artist}}
-                                        -
-                                        {{view.content.venue}} -
-                                        {{formatDate view.content.date}}
                                     </div>
-
-                                    <div class="col-md-2 col-lg-2 col-sm-2">
-                                        <!-- <button class="btn btn-xs btn-danger glyphicon glyphicon-remove"
-                                                 ng-click="removeConcert(loveConcerts,concert)"></button>-->
-
-                                        <button {{action 'removeConcert' view.content.}}
-                                                class="btn btn-xs btn-danger glyphicon glyphicon-remove"
-                                                ></button>
-                                    </div>
-                                </div>
+                                {{/view}}
                             </div>
 
 
@@ -48,78 +38,75 @@
 
                     </div>
                 </div>
-
-            </div>
-            <div class="col-md-4">
-                <div class="panel panel-warning" data-drop="true" ng-model='allConcerts' jqyoui-droppable>
-                    <div class="panel-heading">Alle Konzerte</div>
-                <div class="panel-body">
-                    {{#collection Ember.ConcertCollectionView contentBinding="allConcerts"}}
-                        <div>
-
-
-                            <div class="col-md-12 btn btn-xs" style="cursor: pointer;"
-                                 data-drag="true"
-                                 data-jqyoui-options="{revert: 'invalid'}" ng-model="allConcerts"
-                                 jqyoui-draggable="{index: {{$index}},animate:true,placeholder:true}"
-                                 ng-hide="!concert.artist">
-                                <div class="col-md-10 col-lg-10 col-sm-10" ng-class="alertClass(concert)">
-                                    <div {{bind-attr class="view.alertClass :col-md-10 :col-lg-10 :col-sm-10 :btn :btn-xs"}}>
-                                        {{view.content.artist}}
-                                        -
-                                        {{view.content.venue}} -
-                                        {{formatDate view.content.date}}
-                                    </div>
-                                </div>
-
-                                <div class="col-md-2 col-lg-2 col-sm-2">
-                                    <!--<div class="btn btn-xs btn-danger glyphicon glyphicon-remove"
-                                         ng-click="removeConcert(allConcerts,concert)">-->
-                                    <button {{action 'removeConcert'  view.content}}
-                                            class="btn btn-xs btn-danger glyphicon glyphicon-remove"
-                                            ></button>
-
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                    {{/collection}}
-                </div>
-            </div>
+            {{/view}}
         </div>
         <div class="col-md-4">
-            <div class="panel panel-success" data-drop="true" ng-model='maybeConcerts' jqyoui-droppable>
-                <div class="panel-heading">Mal schauen!</div>
-                <div class="panel-body">
-                    {{#collection Ember.ConcertCollectionView contentBinding="maybeConcerts"}}
-                        <div>
+            {{#view Concertember.DropTarget}}
+                <div class="panel panel-warning" data-drop="true" ng-model='allConcerts' jqyoui-droppable>
+                    <div class="panel-heading">Alle Konzerte</div>
+                    <div class="panel-body">
+                        {{#collection Concertember.ConcertCollectionView contentBinding="allConcerts"}}
+                            <div>
+                                {{#view Concertember.Box}}
 
-                            <div class="col-md-12 btn btn-xs" style="cursor: pointer;"
-                                 data-drag="true"
-                                 data-jqyoui-options="{revert: 'invalid'}" ng-model="allConcerts"
-                                 jqyoui-draggable="{index: {{$index}},animate:true,placeholder:true}"
-                                 ng-hide="!concert.artist">
-                                <div {{bind-attr class="view.alertClass :col-md-10 :col-lg-10 :col-sm-10 :btn :btn-xs"}}
-                                   >
-                                    {{view.content.artist}}
-                                    -
-                                    {{view.content.venue}} -
-                                    {{formatDate view.content.date}}
-                                </div>
+                                    <div class="col-md-12 btn btn-xs" style="cursor: pointer;">
+                                        <div class="col-md-10 col-lg-10 col-sm-10" ng-class="alertClass(concert)">
+                                            <div {{bind-attr class="view.parentView.alertClass :col-md-10 :col-lg-10 :col-sm-10 :btn :btn-xs"}}>
+                                                {{view.parentView.content.artist}}
+                                                -
+                                                {{view.parentView.content.venue}} -
+                                                {{formatDate view.parentView.content.date}}
+                                            </div>
+                                        </div>
 
-                                <div class="col-md-2 col-lg-2 col-sm-2">
-                                    <!-- <button class="btn btn-xs btn-danger glyphicon glyphicon-remove"
-                                             ng-click="removeConcert(maybeConcerts,concert)"></button>-->
-                                    <button {{action 'removeConcert'  view.content}}
-                                            class="btn btn-xs btn-danger glyphicon glyphicon-remove"
-                                            ></button>
-                                </div>
+                                        <div class="col-md-2 col-lg-2 col-sm-2">
+                                            <button {{action 'removeConcert'  view.parentView.content}}
+                                                    class="btn btn-xs btn-danger glyphicon glyphicon-remove"
+                                                    ></button>
+
+                                        </div>
+                                    </div>
+                                {{/view}}
+
+
+
                             </div>
-                        </div>
-                    {{/collection}}
+                        {{/collection}}
+                    </div>
                 </div>
-            </div>
+            {{/view}}
+        </div>
+        <div class="col-md-4">
+
+            {{#view Concertember.DropTarget}}
+                <div class="panel panel-success">
+
+                    <div class="panel-heading">Mal schauen!</div>
+                    <div class="panel-body">
+                        {{#collection Concertember.ConcertCollectionView contentBinding="maybeConcerts"}}
+                            <div>
+                                {{#view Concertember.Box}}
+                                    <div class="col-md-12 btn btn-xs" style="cursor: pointer;">
+                                        <div {{bind-attr class="view.parentView.alertClass :col-md-10 :col-lg-10 :col-sm-10 :btn :btn-xs"}}
+                                                >
+                                            {{view.parentView.content.artist}}
+                                            -
+                                            {{view.parentView.content.venue}} -
+                                            {{formatDate view.parentView.content.date}}
+                                        </div>
+
+                                        <div class="col-md-2 col-lg-2 col-sm-2">
+                                            <button {{action 'removeConcert'  view.parentView.content}}
+                                                    class="btn btn-xs btn-danger glyphicon glyphicon-remove"
+                                                    ></button>
+                                        </div>
+                                    </div>
+                                {{/view}}
+                            </div>
+                        {{/collection}}
+                    </div>
+                </div>
+            {{/view}}
         </div>
     </div>
     <div class="row">
@@ -128,25 +115,18 @@
                 <div class="form-group">
                     <label class="sr-only">Artist</label>
                     {{input value=newConcert.artist placeholder="Künstler"}}
-                    <!--<input type="text" name="artist" ng-model="newConcert.artist" placeholder="Künstler"
-                           required>-->
                 </div>
                 <div class="form-group">
                     <label class="sr-only">Ort</label>
                     {{input value=newConcert.venue placeholder="Ort"}}
-                    <!--<input type="text" name="venue" ng-model="newConcert.venue" placeholder="Ort" required>-->
                 </div>
                 <div class="form-group">
                     <label class="sr-only">Datum</label>
                     {{input value=newConcert.dateString placeholder="Datum (TT.MM.JJJJ)"}}
-                    <!--<input type="datetime" name="date" ng-model="newConcert.date" placeholder="Datum" required>-->
                 </div>
 
                 <button {{action 'addConcert'}} class="btn btn-success glyphicon glyphicon-plus"
                                                 type="submit"></button>
-                <!--<button ng-click="addConcert()" ng-disabled="addConcertForm.$invalid"
-                        class="btn btn-success glyphicon glyphicon-plus"
-                        type="submit"></button>-->
             </form>
         </div>
 
