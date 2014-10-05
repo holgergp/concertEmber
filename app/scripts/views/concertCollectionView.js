@@ -3,6 +3,7 @@
  */
 Concertember.ConcertCollectionView = Ember.CollectionView.extend({
     //contentBinding: 'controller',
+    //controllerBinding: "App.myController",
     itemViewClass: Ember.View.extend({
             alertClass: function () {
 

@@ -15,6 +15,7 @@ DragNDrop.Dragable = Ember.Mixin.create({
         var dataTransfer = event.originalEvent.dataTransfer;
         var concertId = this.get('parentView.content.id');
 
+        //FIXME hgp Is there a way in ember to not rely on this:
         var concertListName = this.get('parentView.parentView.content.content.name');
         //this.get('elementId')
         dataTransfer.setData('concertId', concertId);
@@ -31,6 +32,7 @@ DragNDrop.Droppable = Ember.Mixin.create({
         //var transferedObject = Ember.View.views[viewId];
         var store = this.get('controller').get('store');
 
+        //FIXME hgp Is there a way in ember to not rely on this:
         var targetArray = this.get('childViews')[0].content.content;
 
 

@@ -50,13 +50,11 @@
                                 {{#view Concertember.Box}}
 
                                     <div class="col-md-12 btn btn-xs" style="cursor: pointer;">
-                                        <div class="col-md-10 col-lg-10 col-sm-10" ng-class="alertClass(concert)">
-                                            <div {{bind-attr class="view.parentView.alertClass :col-md-10 :col-lg-10 :col-sm-10 :btn :btn-xs"}}>
-                                                {{view.parentView.content.artist}}
-                                                -
-                                                {{view.parentView.content.venue}} -
-                                                {{formatDate view.parentView.content.date}}
-                                            </div>
+                                        <div {{bind-attr class="view.parentView.alertClass :col-md-10 :col-lg-10 :col-sm-10 :btn :btn-xs"}}>
+                                            {{view.parentView.content.artist}}
+                                            -
+                                            {{view.parentView.content.venue}} -
+                                            {{formatDate view.parentView.content.date}}
                                         </div>
 
                                         <div class="col-md-2 col-lg-2 col-sm-2">
