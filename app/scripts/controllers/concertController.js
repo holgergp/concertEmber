@@ -61,6 +61,7 @@ Concertember.ConcertController = Ember.ObjectController.extend({
         }
 
 
+
     }
 })
 ;

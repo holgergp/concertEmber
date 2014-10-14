@@ -120,9 +120,10 @@ module.exports = function (grunt) {
         },
         mocha: {
             all: {
+                    src: ['test/index.html'],
                 options: {
-                    run: true,
-                    urls: ['http://localhost:<%= connect.options.port %>/index.html']
+                    run: true
+                    //urls: ['http://localhost:<%= connect.options.port %>/index.html']
                 }
             }
         },
@@ -360,11 +361,11 @@ module.exports = function (grunt) {
     });
 
     grunt.registerTask('test', [
-        'clean:server',
+       /** 'clean:server',
         'replace:app',
         'concurrent:test',
         'connect:test',
-        'neuter:app',
+        'neuter:app',**/
         'mocha'
     ]);
 

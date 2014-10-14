@@ -17,7 +17,26 @@
     </script>
 
     <!-- include source files here... -->
-    <script src="../app/scripts/app.js"></script>
+    <script src="../app/bower_components/jquery/dist/jquery.js"></script>
+    <script src="../app/bower_components/handlebars/handlebars.runtime.js"></script>
+    <script src="../app/bower_components/lodash/dist/lodash.js"></script>
+    <script src="../app/bower_components/underscore.string/dist/underscore.string.min.js"></script>
+    <script src="../app/bower_components/ember/ember.min.js"></script>
+    <script src="../app/bower_components/ember-data/ember-data.min.js"></script>
+    <script src="../app/bower_components/moment/moment.js"></script>
+    <script src="../app/bower_components/moment/locale/de.js"></script>
+
+    <script>    _.mixin(_.str.exports());</script>
+    <script src="spec/app.js"></script>
+    <script src="../app/scripts/controllers/concertController.js"></script>
+    <script src="../app/scripts/store.js"></script>
+    <script src="../app/scripts/models/concertModel.js"></script>
+    <script src="../app/scripts/routes/application_route.js"></script>
+    <script src="../app/scripts/helpers/handlebarsHelper.js"></script>
+    <script src="../app/scripts/views/concertCollectionView.js"></script>
+    <script src="../app/scripts/views/dragAndDrop.js"></script>
+
+
     <!-- include spec files here... -->
     <script src="spec/test.js"></script>
 
