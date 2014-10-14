@@ -8,6 +8,9 @@
     "dependencies": {
         "express": "^4.9.5"
     },
+    "scripts": {
+        "test": "grunt test"
+    },
     "devDependencies": {
         "grunt": "~0.4.1",
         "grunt-contrib-copy": "~0.4.1",
