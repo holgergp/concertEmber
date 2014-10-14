@@ -122,7 +122,9 @@ module.exports = function (grunt) {
             all: {
                     src: ['test/**/*.html'],
                 options: {
-                    run: true
+                    run: true,
+                    //Travis timeout
+                    timeout: 10000
                     //urls: ['http://localhost:<%= connect.options.port %>/index.html']
                 }
             }
