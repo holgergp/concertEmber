@@ -2,6 +2,7 @@
  * Created by flunky on 30.09.14.
  */
 Concertember.ConcertController = Ember.ObjectController.extend({
+
     // the initial value of the `search` property
     newConcert: {
         artist: '',
@@ -19,7 +20,10 @@ Concertember.ConcertController = Ember.ObjectController.extend({
             if (!newConcert) {
                 return;
             }
-
+            if(_.isBlank(newConcert.artist)||_.isBlank(newConcert.venue)||_.isBlank(newConcert.dateString)){
+                //'Validation'
+                return;
+            }
             var addedConcert = this.store.createRecord('concert', {
                 artist: newConcert.artist,
                 venue: newConcert.venue,
