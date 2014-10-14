@@ -58,7 +58,7 @@
 
                     concerts.get('allConcerts').then(function (allConcerts) {
                         chai.expect(allConcerts).to.not.be.undefined;
-                        chai.expect(allConcerts.content.length).to.equal(0);
+                        chai.expect(allConcerts.content.length).to.equal(1);
 
 
                         ctrl.get('newConcert').artist = "test";
@@ -70,7 +70,7 @@
 
                             concerts.get('allConcerts').then(function (allConcerts) {
                                 chai.expect(allConcerts).to.not.be.undefined;
-                                chai.expect(allConcerts.content.length).to.equal(1);
+                                chai.expect(allConcerts.content.length).to.equal(2);
                             });
                         });
                     });
