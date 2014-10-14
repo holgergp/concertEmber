@@ -10,7 +10,8 @@
     "font-awesome": "~4.2.0",
     "lodash": "~2.4.1",
     "underscore.string": "~2.3.3",
-    "requirejs": "~2.1.15"
+    "requirejs": "~2.1.15",
+    "moment": "~2.8.3"
   },
   "resolutions": {
     "ember": "1.6.1"
