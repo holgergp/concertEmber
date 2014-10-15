@@ -1,4 +1,7 @@
 /* global describe, it */
+var ok = function(a,b){
+    //FIXME hgp normally provided by the qunit helper
+};
 
 (function () {
     'use strict';
@@ -10,7 +13,7 @@
         // This is broken in some versions of Ember and Ember Data, see:
         // https://github.com/emberjs/data/issues/847
         Ember.run(function () {
-            Concertember.reset();
+            //Concertember.reset();
         });
         // Display an error if asynchronous operations are queued outside of
         // Ember.run.  You need this if you want to stay sane.
@@ -36,7 +39,7 @@
         Concertember.injectTestHelpers();
 
 
-        var ctrl;
+
 
         it('should have an empty new concert at the beginning', function () {
             Ember.run(function () {
@@ -54,6 +57,7 @@
                 chai.expect(newConcert).to.not.be.undefined;
                 chai.expect(newConcert.artist).to.equal('');
 
+                Concertember.reset();
 
             });
         });
@@ -71,15 +75,17 @@
                     allConcerts = concerts.get('allConcerts').then(function (allConcerts) {
                         chai.expect(allConcerts).to.not.be.undefined;
                         chai.expect(allConcerts.content.length).to.equal(1);
+
                         done();
                     });
 
                 });
-
+                Concertember.reset();
 
             });
 
         });
+
         it('should add one loveconcert ', function (done) {
             Ember.run(function () {
                 // Won't actually load until the end of the run-block.
@@ -91,12 +97,14 @@
                 ctrl.get('newConcert').venue = "testVenue";
                 ctrl.get('newConcert').dateString = "10.01.2015";
                 ctrl.send('addConcert');
-                var concerts
+                var concerts;
                 ctrl.store.find('concerts', 'concerts_1').then(function (_concerts) {
                     concerts=_concerts;
                     concerts.get('allConcerts').then(function (allConcerts){
                         chai.expect(allConcerts).to.not.be.undefined;
                         chai.expect(allConcerts.content.length).to.equal(2);
+                        //Ugly hack to prevent ember data from fiddling with 'inflight objects' something async happening here
+                        //Concertember.reset();
                         done();
                     });
 
