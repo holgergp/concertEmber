@@ -24,11 +24,11 @@
 
 // Optional: Clean up after our last test so you can try out the app
 // in the jsFiddle.  This isn't normally required.
-    after(function () {
+  /**  after(function () {
         Ember.run(function () {
             Concertember.reset();
         });
-    });
+    });**/
 
     describe('The Concerts controller', function () {
         //emq.globalize();
@@ -38,7 +38,7 @@
 
         var ctrl;
 
-        it('should add one concert', function () {
+        it('should have an empty new concert at the beginning', function () {
             Ember.run(function () {
                 // Won't actually load until the end of the run-block.
 
@@ -54,32 +54,58 @@
                 chai.expect(newConcert).to.not.be.undefined;
                 chai.expect(newConcert.artist).to.equal('');
 
-                var concerts = ctrl.store.find('concerts', 'concerts_1').then(function (concerts) {
 
-                    concerts.get('allConcerts').then(function (allConcerts) {
+            });
+        });
+        it('should have one loveconcert at the beginning', function (done) {
+            var allConcerts;
+            Ember.run(function () {
+                // Won't actually load until the end of the run-block.
+
+                //http://stackoverflow.com/questions/19716232/how-to-unit-test-controller-which-uses-this-getstore
+                var ctrl = Concertember.__container__.lookup('controller:concert');
+
+
+                ctrl.store.find('concerts', 'concerts_1').then(function (concerts) {
+
+                    allConcerts = concerts.get('allConcerts').then(function (allConcerts) {
                         chai.expect(allConcerts).to.not.be.undefined;
                         chai.expect(allConcerts.content.length).to.equal(1);
-
-
-                        ctrl.get('newConcert').artist = "test";
-                        ctrl.get('newConcert').venue = "testVenue";
-                        ctrl.get('newConcert').dateString = "10.01.2015";
-                        ctrl.send('addConcert');
-
-                        var concerts = ctrl.store.find('concerts', 'concerts_1').then(function (concerts) {
-
-                            concerts.get('allConcerts').then(function (allConcerts) {
-                                chai.expect(allConcerts).to.not.be.undefined;
-                                chai.expect(allConcerts.content.length).to.equal(2);
-                            });
-                        });
+                        done();
                     });
+
                 });
-                // finally we assert that our values have been updated
-                // by triggering our action.
-                /**assert.equal(ctrl.get('propA'), 'Testing is cool');
-                 assert.equal(ctrl.get('propB'), 'Testing Rocks!');**/
+
+
             });
+
+        });
+        it('should add one loveconcert ', function (done) {
+            Ember.run(function () {
+                // Won't actually load until the end of the run-block.
+
+                //http://stackoverflow.com/questions/19716232/how-to-unit-test-controller-which-uses-this-getstore
+                var ctrl = Concertember.__container__.lookup('controller:concert');
+
+                ctrl.get('newConcert').artist = "test";
+                ctrl.get('newConcert').venue = "testVenue";
+                ctrl.get('newConcert').dateString = "10.01.2015";
+                ctrl.send('addConcert');
+                var concerts
+                ctrl.store.find('concerts', 'concerts_1').then(function (_concerts) {
+                    concerts=_concerts;
+                    concerts.get('allConcerts').then(function (allConcerts){
+                        chai.expect(allConcerts).to.not.be.undefined;
+                        chai.expect(allConcerts.content.length).to.equal(2);
+                        done();
+                    });
+
+                });
+
+
+            });
+
+
         });
 
     });
