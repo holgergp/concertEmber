@@ -6,7 +6,7 @@
         "url": "https://github.com/holgergp/concertEmber.git"
     },
     "scripts": {
-        "test": "grunt test"
+        "test": "grunt test --debug"
     },
     "dependencies": {
         "express": "^4.9.5"
