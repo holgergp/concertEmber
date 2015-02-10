@@ -4,6 +4,8 @@ concertEmber
 
 Demo application to compare various client side mvc approaches. This time using ember.js
 
+Scaffolding done using [Yeoman](http://yeoman.io/) and the [Ember Generator] (https://github.com/yeoman/generator-ember).
+
 Prerequisites
 --------------
 - node.js >= 0.10
