@@ -6,23 +6,24 @@
                 <div class="panel panel-primary">
                     <div class="panel-heading">Muss ich hin!</div>
                     <div class="panel-body">
-                        {{#collection Concertember.ConcertCollectionView contentBinding="loveConcerts"}}
+
+                        {{#each concert in loveConcerts}}
 
                             <div>
 
                                 {{#view Concertember.Box}}
                                     <div class="col-md-12 btn btn-xs" style="cursor: pointer;">
 
-                                        <div {{bind-attr class="view.parentView.alertClass :col-md-10 :col-lg-10 :col-sm-10 :btn :btn-xs"}}>
-                                            {{view.parentView.content.artist}}
+                                        <div {{bind-attr class="concert.alertClass :col-md-10 :col-lg-10 :col-sm-10 :btn :btn-xs"}}>
+                                            {{concert.artist}}
                                             -
-                                            {{view.parentView.content.venue}} -
-                                            {{formatDate view.parentView.content.date}}
+                                            {{concert.venue}} -
+                                            {{formatDate concert.date}}
                                         </div>
 
                                         <div class="col-md-2 col-lg-2 col-sm-2">
 
-                                            <button {{action 'removeConcert' view.parentView.content}}
+                                            <button {{action 'removeConcert' concert}}
                                                     class="btn btn-xs btn-danger glyphicon glyphicon-remove"
                                                     ></button>
                                         </div>
@@ -34,7 +35,8 @@
 
 
 
-                        {{/collection}}
+                        {{/each}}
+
 
                     </div>
                 </div>
@@ -45,20 +47,21 @@
                 <div class="panel panel-warning" data-drop="true" ng-model='allConcerts' jqyoui-droppable>
                     <div class="panel-heading">Alle Konzerte</div>
                     <div class="panel-body">
-                        {{#collection Concertember.ConcertCollectionView contentBinding="allConcerts"}}
+                        {{#each concert in allConcerts}}
+
                             <div>
                                 {{#view Concertember.Box}}
 
                                     <div class="col-md-12 btn btn-xs" style="cursor: pointer;">
-                                        <div {{bind-attr class="view.parentView.alertClass :col-md-10 :col-lg-10 :col-sm-10 :btn :btn-xs"}}>
-                                            {{view.parentView.content.artist}}
+                                        <div {{bind-attr class="concert.alertClass :col-md-10 :col-lg-10 :col-sm-10 :btn :btn-xs"}}>
+                                            {{concert.artist}}
                                             -
-                                            {{view.parentView.content.venue}} -
-                                            {{formatDate view.parentView.content.date}}
+                                            {{concert.venue}} -
+                                            {{formatDate concert.date}}
                                         </div>
 
                                         <div class="col-md-2 col-lg-2 col-sm-2">
-                                            <button {{action 'removeConcert'  view.parentView.content}}
+                                            <button {{action 'removeConcert'  concert}}
                                                     class="btn btn-xs btn-danger glyphicon glyphicon-remove"
                                                     ></button>
 
@@ -69,7 +72,7 @@
 
 
                             </div>
-                        {{/collection}}
+                        {{/each}}
                     </div>
                 </div>
             {{/view}}
@@ -81,56 +84,58 @@
 
                     <div class="panel-heading">Mal schauen!</div>
                     <div class="panel-body">
-                        {{#collection Concertember.ConcertCollectionView contentBinding="maybeConcerts"}}
+                        {{#each concert in maybeConcerts}}
                             <div>
                                 {{#view Concertember.Box}}
                                     <div class="col-md-12 btn btn-xs" style="cursor: pointer;">
-                                        <div {{bind-attr class="view.parentView.alertClass :col-md-10 :col-lg-10 :col-sm-10 :btn :btn-xs"}}
+                                        <div {{bind-attr class="concert.alertClass :col-md-10 :col-lg-10 :col-sm-10 :btn :btn-xs"}}
                                                 >
-                                            {{view.parentView.content.artist}}
+                                            {{concert.artist}}
                                             -
-                                            {{view.parentView.content.venue}} -
-                                            {{formatDate view.parentView.content.date}}
+                                            {{concert.venue}} -
+                                            {{formatDate concert.date}}
                                         </div>
 
                                         <div class="col-md-2 col-lg-2 col-sm-2">
-                                            <button {{action 'removeConcert'  view.parentView.content}}
+                                            <button {{action 'removeConcert'  concert}}
                                                     class="btn btn-xs btn-danger glyphicon glyphicon-remove"
                                                     ></button>
                                         </div>
                                     </div>
                                 {{/view}}
                             </div>
-                        {{/collection}}
+                        {{/each}}
                     </div>
                 </div>
             {{/view}}
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-9">
-            <form name="addConcertForm" novalidate class="form-inline" role="form">
-                <div class="form-group">
-                    <label class="sr-only">Artist</label>
-                    {{input value=newConcert.artist placeholder="Künstler"}}
-                </div>
-                <div class="form-group">
-                    <label class="sr-only">Ort</label>
-                    {{input value=newConcert.venue placeholder="Ort"}}
-                </div>
-                <div class="form-group">
-                    <label class="sr-only">Datum</label>
-                    {{input value=newConcert.dateString placeholder="Datum (TT.MM.JJJJ)"}}
-                </div>
 
-                <button {{action 'addConcert'}} class="btn btn-success glyphicon glyphicon-plus"
-                                                type="submit"></button>
-            </form>
-        </div>
+</div>
+<div class="row">
+    <div class="col-md-9">
+        <form name="addConcertForm" novalidate class="form-inline" role="form">
+            <div class="form-group">
+                <label class="sr-only">Artist</label>
+                {{input value=newConcert.artist placeholder="Künstler"}}
+            </div>
+            <div class="form-group">
+                <label class="sr-only">Ort</label>
+                {{input value=newConcert.venue placeholder="Ort"}}
+            </div>
+            <div class="form-group">
+                <label class="sr-only">Datum</label>
+                {{input value=newConcert.dateString placeholder="Datum (TT.MM.JJJJ)"}}
+            </div>
 
+            <button {{action 'addConcert'}} class="btn btn-success glyphicon glyphicon-plus"
+                                            type="submit"></button>
+        </form>
     </div>
 
-    <div class="footer navbar-fixed-bottom">
+</div>
+
+<div class="footer navbar-fixed-bottom">
          <span>
         <i class="fa fa-github"></i>
     </span>
@@ -145,6 +150,6 @@
     </span>
 
 
-    </div>
+</div>
 
 </div>
