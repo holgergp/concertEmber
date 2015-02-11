@@ -1,7 +1,7 @@
 <div class="">
     <div class="row">
         <div class="col-md-4">
-            {{#view Concertember.DropTarget}}
+            {{#view Concertember.DropTarget targetList=loveConcerts}}
 
                 <div class="panel panel-primary">
                     <div class="panel-heading">Muss ich hin!</div>
@@ -11,7 +11,7 @@
 
                             <div>
 
-                                {{#view Concertember.Box}}
+                                {{#view Concertember.Box id="info-view" content=concert sourceList=../loveConcerts}}
                                     <div class="col-md-12 btn btn-xs" style="cursor: pointer;">
 
                                         <div {{bind-attr class="concert.alertClass :col-md-10 :col-lg-10 :col-sm-10 :btn :btn-xs"}}>
@@ -43,14 +43,14 @@
             {{/view}}
         </div>
         <div class="col-md-4">
-            {{#view Concertember.DropTarget}}
-                <div class="panel panel-warning" data-drop="true" ng-model='allConcerts' jqyoui-droppable>
+            {{#view Concertember.DropTarget targetList=allConcerts}}
+                <div class="panel panel-warning" data-drop="true" jqyoui-droppable>
                     <div class="panel-heading">Alle Konzerte</div>
                     <div class="panel-body">
                         {{#each concert in allConcerts}}
 
                             <div>
-                                {{#view Concertember.Box}}
+                                {{#view Concertember.Box content=concert sourceList=../allConcerts}}
 
                                     <div class="col-md-12 btn btn-xs" style="cursor: pointer;">
                                         <div {{bind-attr class="concert.alertClass :col-md-10 :col-lg-10 :col-sm-10 :btn :btn-xs"}}>
@@ -79,14 +79,14 @@
         </div>
         <div class="col-md-4">
 
-            {{#view Concertember.DropTarget}}
+            {{#view Concertember.DropTarget targetList=maybeConcerts}}
                 <div class="panel panel-success">
 
                     <div class="panel-heading">Mal schauen!</div>
                     <div class="panel-body">
                         {{#each concert in maybeConcerts}}
                             <div>
-                                {{#view Concertember.Box}}
+                                {{#view Concertember.Box content=concert sourceList=../maybeConcerts}}
                                     <div class="col-md-12 btn btn-xs" style="cursor: pointer;">
                                         <div {{bind-attr class="concert.alertClass :col-md-10 :col-lg-10 :col-sm-10 :btn :btn-xs"}}
                                                 >
